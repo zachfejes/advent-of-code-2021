@@ -93,5 +93,34 @@ namespace AoC.Test {
             //ASSERT
             Assert.AreEqual(expectedNumberOfDepthIncreases, numberOfDepthIncreases);
         }
+
+
+        [Test]
+        public void WindowSumAtIndex_Given_Valid_Array_Index_And_Chosen_Length_Return_Sum_Of_Window_Values() {
+            //ASSEMBLE
+            int[] testArray = new int[] { 100, 200, 300, 250, 350, 425, 150, 500, 260, 600 };
+            int windowSize = 3;
+            int index = 5;
+            int expectedWindowSum = 1075;
+            
+            //ACT
+            int windowSum = analyzer.WindowSumAtIndex(testArray, index, windowSize);
+
+            //ASSERT
+            Assert.AreEqual(expectedWindowSum, windowSum);
+        }
+
+        [Test]
+        public void FindNumberOfDepthIncreasesSmoothed_Valid_Report_Returns_Correct_Number_Of_Smoothed_Increases() {
+            //ASSEMBLE
+            int smoothingWindowSize = 3;
+            int expectedDepthIncreasesSmoothed = 5;
+
+            //ACT
+            int numberOfSmoothedDepthIncreases = analyzer.FindNumberOfDepthIncreasesSmoothed(Parameters.validTestReport, smoothingWindowSize);
+
+            //ASSERT
+            Assert.AreEqual(expectedDepthIncreasesSmoothed, numberOfSmoothedDepthIncreases);
+        }
     }
 }

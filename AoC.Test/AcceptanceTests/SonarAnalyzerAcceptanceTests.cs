@@ -12,19 +12,39 @@ namespace AoC.Test {
     public class SonarAnalyzerAccetanceTests {
 
         public static object[] validReports = {
-            new object[] { Parameters.day1AInputs , 1342 }
+            new object[] { Parameters.day1AInputs , 1342, 1378 }
         };
 
-        [TestCaseSource(nameof(validReports))]
-        public void Sonar_Analyzer_Outputs_Number_Of_Depth_Increases_In_Report(string validDepthReport, int expectedDepthIncreases) {
-            //ASSEMBLE
-            SonarAnalyzer sonarAnalyzer = new SonarAnalyzer();
+        SonarAnalyzer sonarAnalyzer;
 
+        [SetUp]
+        public void Setup() {
+            sonarAnalyzer = new SonarAnalyzer();
+        }
+
+
+        [TestCaseSource(nameof(validReports))]
+        public void Sonar_Analyzer_Outputs_Number_Of_Depth_Increases_In_Report(string validDepthReport, int expectedDepthIncreases, int expectedDepthIncreasesSmoothed) {
+            //ASSEMBLE
             //ACT
-            int possibleIncreases = sonarAnalyzer.FindNumberOfDepthIncreases(validDepthReport);
+            int depthIncreases = sonarAnalyzer.FindNumberOfDepthIncreases(validDepthReport);
 
             //ASSERT
-            Assert.AreEqual(expectedDepthIncreases, possibleIncreases);
+            Assert.AreEqual(expectedDepthIncreases, depthIncreases);
+        }
+
+
+
+        [TestCaseSource(nameof(validReports))]
+        public void Sonar_Analyzer_Outputs_Number_Of_Depth_Increases_From_Report_Window_Smoothing(string validDepthReport, int expectedDepthIncreases, int expectedDepthIncreasesSmoothed) {
+            //ASSEMBLE
+            int windowSize = 3;
+
+            //ACT
+            int depthIncreasesSmoothed = sonarAnalyzer.FindNumberOfDepthIncreasesSmoothed(validDepthReport, windowSize);
+
+            //ASSERT
+            Assert.AreEqual(expectedDepthIncreasesSmoothed, depthIncreasesSmoothed);
         }
 
     }
