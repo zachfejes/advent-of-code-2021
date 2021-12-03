@@ -1,4 +1,7 @@
+using System;
+using System.Threading.Tasks;
 using AoC.Sonar;
+using NUnit;
 using NUnit.Framework;
 
 namespace AoC.Test {
@@ -6,19 +9,30 @@ namespace AoC.Test {
     [TestFixture]
     public class SonarAnalyzerUnitTests {
 
-
-        //Test that we can create a SonarAnalyzer object (constructor)
         [Test]
-        public void SonarAnalyzer_Constructor_Creates_Object()
-        {
+        public void Constructor_Creates_Instance(){
             //ASSEMMBLE
-
             //ACT
             SonarAnalyzer sonarAnalyzer = new SonarAnalyzer();
 
             //ASSERT
-            Assert.NotNull(sonarAnalyzer);
+            Assert.IsInstanceOf<SonarAnalyzer>(sonarAnalyzer);
         }
+
+        [Test]
+        public async Task ParseReportToIntArray_Parses_File_From_Reference_To_Integer_Array() {
+            //ASSEMBLE
+            SonarAnalyzer analyzer = new SonarAnalyzer();
+            string textFileReference = @"../../../UnitTests/TestReport.txt";
+            int[] expectedOutputArray = {199, 200, 208, 210, 200, 207, 240, 269, 260, 263};
+
+            //ACT
+            var outputArray = analyzer.ParseReportToIntArray(textFileReference);
+
+            //ASSERT
+            Assert.AreEqual(expectedOutputArray, outputArray);
+        }
+
 
         // Calling the FindNumberOfDepthIncreases method with an array of integers will provide the correct number of depth increases in that array
 
