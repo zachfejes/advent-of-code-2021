@@ -1,11 +1,7 @@
-using System;
 using NUnit.Framework;
 using AoC.Sonar;
 
-
 namespace AoC.Test {
-
-
     /* Acceptance Criteria:
         GIVEN that the sonar has been triggered nominally
         WHEN the sonar analyzer receive a sweep report of numeric values as a text file
@@ -14,7 +10,6 @@ namespace AoC.Test {
 
     [TestFixture]
     public class SonarAnalyzerAccetanceTests {
-
 
         public static object[] validReports = {
             new object[] { Parameters.day1AInputs , 1342 }

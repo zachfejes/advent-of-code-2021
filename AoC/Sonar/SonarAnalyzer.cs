@@ -8,7 +8,6 @@ namespace AoC.Sonar {
 
     public class SonarAnalyzer {
 
-
         public int FindNumberOfDepthIncreases(string pathToReportFile) {
             int[] depthArray = ParseReportToIntArray(pathToReportFile);
             int numberOfDepthIncreases = 0;
@@ -23,7 +22,6 @@ namespace AoC.Sonar {
         }
 
         public int[] ParseReportToIntArray(string pathToReportFile) {
-
             List<int> depthArray = new List<int>();
 
             foreach(string line in File.ReadLines(pathToReportFile)) {
@@ -45,6 +43,6 @@ namespace AoC.Sonar {
 
             return parsedValue;
         }
+        
     }
-
 }
