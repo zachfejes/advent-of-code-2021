@@ -14,6 +14,9 @@ namespace AoC.Test {
         public static string invalidTestReport = unitTestInputDirectoryPath + @"InvalidTestReport.txt";
 
 
+        public static string validCourseCommands = unitTestInputDirectoryPath + @"ValidCourseCommands.txt";
+
+
         public static string day1AInputs = accepptanceTestInputDirectoryPath + @"Day1AInputs.txt";
         public static string day2AInupts = accepptanceTestInputDirectoryPath + @"Day2AInputs.txt";
 
