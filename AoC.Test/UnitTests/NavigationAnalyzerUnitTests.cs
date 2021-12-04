@@ -7,6 +7,22 @@ namespace AoC.Test.Unit {
 
     [TestFixture]
     public class NavigationAnalyzerUnitTests {
+        [Test]
+        public void NavCommand_Constructor_Assigns_Attributes_From_Parameters() {
+            //ASSEMBLE
+            string expectedDirection = "forward";
+            int expectedMagnitude = 5;
+
+            //ACT
+            NavCommand navCommand = new NavCommand(expectedDirection, expectedMagnitude);
+
+            //ASSERT
+            Assert.Multiple(() => {
+                Assert.AreEqual(expectedDirection, navCommand.direction);
+                Assert.AreEqual(expectedMagnitude, navCommand.magnitude);
+            });
+        }
+
 
         [Test]
         public void NavigationAnalyzer_Constructor_Creates_Instance() {
@@ -21,17 +37,48 @@ namespace AoC.Test.Unit {
 
 
         [Test]
-        public void ParseCommandsToStringArray_Takes_Valid_File_Reference_Outputs_Array() {
+        public void ParseFileToNavCommandArray_Takes_Valid_File_Reference_Outputs_Array() {
             //ASSEMBLE
             NavigationAnalyzer navAnalyzer = new NavigationAnalyzer();
             string validCourseCommandFile = Parameters.validCourseCommands;
-            string[] expectedCommandArray = new string[] { "forward 5", "down 5", "forward 8", "up 3", "down 8", "forward 2" };
+            NavCommand[] expectedNavCommandArray = new NavCommand[] { 
+                new NavCommand("forward", 5),
+                new NavCommand("down", 5),
+                new NavCommand("forward", 8),
+                new NavCommand("up", 3),
+                new NavCommand("down", 8),
+                new NavCommand("forward", 2)
+            };
 
             //ACT
-            string[] outputStringArray = navAnalyzer.ParseCommandsToStringArray(validCourseCommandFile);
+            NavCommand[] outputNavCommandArray = navAnalyzer.ParseFileToNavCommandArray(validCourseCommandFile);
 
             //ASSERT
-            Assert.AreEqual(expectedCommandArray, outputStringArray);
+            Assert.Multiple(() => {
+                for(int i = 0; i < expectedNavCommandArray.Length; i++) {
+                    Assert.AreEqual(expectedNavCommandArray[i].direction, outputNavCommandArray[i].direction);
+                    Assert.AreEqual(expectedNavCommandArray[i].magnitude, outputNavCommandArray[i].magnitude);
+                }
+            });
+        }
+
+
+        [Test]
+        public void ParseNavCommandString_Reads_Valid_String_And_Creates_NavCommand_With_Values() {
+            //ASSEMBLE
+            NavigationAnalyzer navAnalyzer = new NavigationAnalyzer();
+            string validCommandString = "forward 5";
+            string expectedDirection = "forward";
+            int expectedMagnitude = 5;
+
+            //ACT
+            NavCommand possibleNavCommand = navAnalyzer.ParseNavCommandString(validCommandString);
+
+            //ASSERT
+            Assert.Multiple(() => {
+                Assert.AreEqual(expectedDirection, possibleNavCommand.direction);
+                Assert.AreEqual(expectedMagnitude, possibleNavCommand.magnitude);
+            });
         }
 
     }
