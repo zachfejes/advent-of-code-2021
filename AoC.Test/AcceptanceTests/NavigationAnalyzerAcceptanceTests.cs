@@ -1,7 +1,7 @@
 using NUnit.Framework;
 //using AoC.Navigation;
 
-namespace AoC.Test {
+namespace AoC.Test.Acceptance {
     /* Acceptance Criteria:
         GIVEN that the course plan has been generated nominally and is valid
         WHEN the the navigation system receives a course plan

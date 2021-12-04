@@ -3,7 +3,7 @@ using System.IO;
 using AoC.Sonar;
 using NUnit.Framework;
 
-namespace AoC.Test {
+namespace AoC.Test.Unit {
 
     [TestFixture]
     public class SonarAnalyzerUnitTests {

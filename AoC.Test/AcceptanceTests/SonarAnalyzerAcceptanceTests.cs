@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using AoC.Sonar;
 
-namespace AoC.Test {
+namespace AoC.Test.Acceptance {
     /* Acceptance Criteria:
         GIVEN that the sonar has been triggered nominally
         WHEN the sonar analyzer receive a sweep report of numeric values as a text file
