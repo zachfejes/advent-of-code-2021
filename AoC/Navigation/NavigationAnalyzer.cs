@@ -15,6 +15,54 @@ namespace AoC.Navigation {
 
     public class NavigationAnalyzer {
         
+        public int[] CalculateNavPlanFinalPosition(string pathToCommandsFile) {
+            NavCommand[] navCommands = ParseFileToNavCommandArray(pathToCommandsFile);
+            int aim = 0;
+            int[] position = new int[] { 0, 0 };
+
+            for(int i = 0; i < navCommands.Length; i++) {
+                switch(navCommands[i].direction) {
+                    case "forward":
+                        position[0] += navCommands[i].magnitude;
+                        position[1] += aim*navCommands[i].magnitude;
+                        break;
+                    case "up":
+                        aim -= navCommands[i].magnitude;
+                        break;
+                    case "down":
+                        aim += navCommands[i].magnitude;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return position;
+        }
+        
+        public int CalculateNavPlanTotalVectorProduct(string pathToCommandsFile) {
+            NavCommand[] navCommands = ParseFileToNavCommandArray(pathToCommandsFile);
+            int x = 0;
+            int y = 0;
+
+            for(int i = 0; i < navCommands.Length; i++) {
+                switch(navCommands[i].direction) {
+                    case "forward":
+                        x += navCommands[i].magnitude;
+                        break;
+                    case "up":
+                        y -= navCommands[i].magnitude;
+                        break;
+                    case "down":
+                        y += navCommands[i].magnitude;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return x*y;
+        }
 
         public NavCommand[] ParseFileToNavCommandArray(string pathToCommandsFile) {
             List<NavCommand> commandsArray = new List<NavCommand>();

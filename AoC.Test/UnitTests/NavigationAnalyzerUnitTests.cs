@@ -27,7 +27,6 @@ namespace AoC.Test.Unit {
         [Test]
         public void NavigationAnalyzer_Constructor_Creates_Instance() {
             //ASSEMBLE
-
             //ACT
             NavigationAnalyzer possibleNavAnalyzer = new NavigationAnalyzer();
 
@@ -79,6 +78,36 @@ namespace AoC.Test.Unit {
                 Assert.AreEqual(expectedDirection, possibleNavCommand.direction);
                 Assert.AreEqual(expectedMagnitude, possibleNavCommand.magnitude);
             });
+        }
+
+
+        [Test]
+        public void CalculateNavPlanTotalVectorProduct_Takes_Valid_Command_File_Outputs_Total_Vector_Product() {
+            //ASSEMBLE
+            NavigationAnalyzer navAnalyzer = new NavigationAnalyzer();
+            string validCourseCommandFile = Parameters.validCourseCommands;
+            int expectedProduct = 150; 
+
+            //ACT
+            int calculatedProduct = navAnalyzer.CalculateNavPlanTotalVectorProduct(validCourseCommandFile);
+
+            //ASSERT
+            Assert.AreEqual(expectedProduct, calculatedProduct);
+        } 
+
+
+        [Test]
+        public void CalculateNavPlanFinalPosition_Takes_Valid_Command_File_Outputs_Final_Position() {
+            //ASSEMBLE
+            NavigationAnalyzer navAnalyzer = new NavigationAnalyzer();
+            string validCourseCommandFile = Parameters.validCourseCommands;
+            int[] expectedPosition = new int[]{ 15, 60 };
+
+            //ACT
+            int[] calculatedFinalPosition = navAnalyzer.CalculateNavPlanFinalPosition(validCourseCommandFile);
+
+            //ASSERT
+            Assert.AreEqual(expectedPosition, calculatedFinalPosition);
         }
 
     }
