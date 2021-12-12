@@ -6,15 +6,15 @@ namespace AoC.Test {
 
         public static string unitTestInputDirectoryPath = @"../../../UnitTests/TestInputFiles/";
 
-        //Power Report Test Files
+        //Diagnostic Report Test Files
 
-        public static string powerReportDirectoryPath = unitTestInputDirectoryPath + @"PowerReports/";
+        public static string DiagnosticReportDirectoryPath = unitTestInputDirectoryPath + @"DiagnosticReports/";
 
-        public static string validPowerReport = powerReportDirectoryPath + @"ValidPowerReport.txt";
-        public static string validSimplePowerReport = powerReportDirectoryPath + @"ValidSimplePowerReport.txt";
-        public static string singleLinePowerReport = powerReportDirectoryPath + @"SingleLinePowerReport.txt";
-        public static string emptyPowerReport = powerReportDirectoryPath + @"EmptyPowerReport.txt";
-        public static string invalidPowerReport = powerReportDirectoryPath + @"InvalidPowerReport.txt";
+        public static string validDiagnosticReport = DiagnosticReportDirectoryPath + @"ValidReport.txt";
+        public static string validSimpleDiagnosticReport = DiagnosticReportDirectoryPath + @"ValidSimpleReport.txt";
+        public static string singleLineDiagnosticReport = DiagnosticReportDirectoryPath + @"SingleLineReport.txt";
+        public static string emptyDiagnosticReport = DiagnosticReportDirectoryPath + @"EmptyReport.txt";
+        public static string invalidDiagnosticReport = DiagnosticReportDirectoryPath + @"InvalidReport.txt";
 
         //Sonar Report Test Files
         public static string validTestReport = unitTestInputDirectoryPath + @"ValidTestReport.txt";

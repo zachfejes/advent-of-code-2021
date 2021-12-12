@@ -1,11 +1,11 @@
 using System;
-using AoC.Power;
+using AoC.Diagnostic;
 using NUnit.Framework;
 
 namespace AoC.Test.Unit {
 
     [TestFixture]
-    public class PowerAnalyzerUnitTests {
+    public class DiagnosticAnalyzerUnitTests {
 
         public static object[] validGammaEpsilonBinaryArrays = {
             new object[] { 
@@ -31,21 +31,21 @@ namespace AoC.Test.Unit {
         };
 
         [Test]
-        public void PowerAnalyzer_Constructor_Creates_Instance() {
+        public void DiagnosticAnalyzer_Constructor_Creates_Instance() {
             //ASSEMBLE
             //ACT
-            PowerAnalyzer possiblePowerAnalyzer = new PowerAnalyzer();
+            DiagnosticAnalyzer possibleDiagnosticAnalyzer = new DiagnosticAnalyzer();
 
             //ASSERT
-            Assert.IsInstanceOf<PowerAnalyzer>(possiblePowerAnalyzer);
+            Assert.IsInstanceOf<DiagnosticAnalyzer>(possibleDiagnosticAnalyzer);
         }
 
         [Test]
         public void ParseReportToNestedIntArray_Parses_File_From_Reference_To_Nested_Integer_Array() {
             //ASSEMBLE
-            PowerAnalyzer analyzer = new PowerAnalyzer();
+            DiagnosticAnalyzer analyzer = new DiagnosticAnalyzer();
             int[][] expectedParcedOutput = new int[][] {new int[]{ 1, 0, 1 }, new int[]{ 1, 1, 0 }, new int[]{ 0, 0, 0 }};
-            string validFilePath = Parameters.validSimplePowerReport;
+            string validFilePath = Parameters.validSimpleDiagnosticReport;
 
             //ACT
             int[][] parsedOutput = analyzer.ParseReportToNestedIntArray(validFilePath);
@@ -58,7 +58,7 @@ namespace AoC.Test.Unit {
         [Test]
         public void ParseLine_Takes_String_And_Outputs_Int_Array() {
             //ASSEMBLE
-            PowerAnalyzer analyzer = new PowerAnalyzer();
+            DiagnosticAnalyzer analyzer = new DiagnosticAnalyzer();
             string validBinaryString = "1010110";
             int[] expectedOutput = new int[] {1, 0, 1, 0, 1, 1, 0};
 
@@ -72,7 +72,7 @@ namespace AoC.Test.Unit {
         [TestCaseSource(nameof(validGammaEpsilonBinaryArrays))]
         public void CalculateGammaFromBinaryIntArray_Outputs_Correct_Gamma_Array(int[][] validBinaryIntArray, int[] expectedGammaArray, int[] expectedGammaAndEpsilon) {
             //ASSEMBLE
-            PowerAnalyzer analyzer = new PowerAnalyzer();
+            DiagnosticAnalyzer analyzer = new DiagnosticAnalyzer();
 
             //ACT
             int[] outputGammaArray = analyzer.CalculateGammaFromBinaryIntArray(validBinaryIntArray);
@@ -84,7 +84,7 @@ namespace AoC.Test.Unit {
         [TestCaseSource(nameof(validGammaEpsilonBinaryArrays))]
         public void CalculateGammaAndEpsilonRates_Takes_BinaryIntArray_And_Outputs_Correct_Gamma_and_Epsilon(int[][] validBinaryIntArray, int[] expectedGammaArray, int[] expectedGammaAndEpsilon ) {
             //ASSEMBLE
-            PowerAnalyzer analyzer = new PowerAnalyzer();
+            DiagnosticAnalyzer analyzer = new DiagnosticAnalyzer();
 
             //ACT
             int[] outputGammaAndEpsilon = analyzer.CalculateGammaAndEpsilonRates(validBinaryIntArray);
@@ -97,12 +97,12 @@ namespace AoC.Test.Unit {
         [Test]
         public void CalculateReportPowerConsumption_Takes_Valid_Input_File_String_Outputs_Power_Consumption() {
             //ASSEMBLE
-            PowerAnalyzer analyzer = new PowerAnalyzer();
-            string validPowerReport = Parameters.validPowerReport;
+            DiagnosticAnalyzer analyzer = new DiagnosticAnalyzer();
+            string validDiagnosticReport = Parameters.validDiagnosticReport;
             int expectedPowerConsumption = 198;
 
             //ACT
-            int powerConsumption = analyzer.CalculateReportPowerConsumption(validPowerReport);
+            int powerConsumption = analyzer.CalculateReportPowerConsumption(validDiagnosticReport);
 
             //ASSERT
             Assert.AreEqual(expectedPowerConsumption, powerConsumption);

@@ -1,16 +1,16 @@
-namespace AoC.Power {
+namespace AoC.Diagnostic {
 
-    public class PowerAnalyzer {
+    public class DiagnosticAnalyzer {
 
         public int[][] ParseReportToNestedIntArray(string pathToReportFile) {
-            List<int[]> powerArray = new List<int[]>();
+            List<int[]> diagnosticDataArray = new List<int[]>();
 
             foreach(string line in File.ReadLines(pathToReportFile)) {
                 List<int> binaryLine = new List<int>(ParseLine(line));
-                powerArray.Add(binaryLine.ToArray<int>());
+                diagnosticDataArray.Add(binaryLine.ToArray<int>());
             }
 
-            return powerArray.ToArray<int[]>();
+            return diagnosticDataArray.ToArray<int[]>();
         }
 
         public int[] ParseLine(string line) {
@@ -22,7 +22,7 @@ namespace AoC.Power {
                 }
             }
             catch {
-                throw new FormatException("Power Report does not conform to expected format.");
+                throw new FormatException("Diagnostic Report does not conform to expected format.");
             }
 
             return binaryIntArray;

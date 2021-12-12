@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using AoC.Power;
+using AoC.Diagnostic;
 
 namespace AoC.Test.Acceptance {
     /* Acceptance Criteria:
@@ -9,17 +9,17 @@ namespace AoC.Test.Acceptance {
     */
 
     [TestFixture]
-    public class PowerAnalyzerAcceptanceTests {
+    public class DiagnosticAnalyzerAcceptanceTests {
 
         [Test]
-        public void Power_Analyzer_Parses_Valid_Power_Report_And_Outputs_Decimal_Power_Consumption() {
+        public void Diagnostic_Analyzer_Parses_Valid_Power_Report_And_Outputs_Decimal_Power_Consumption() {
             //ASSEMBLE
-            PowerAnalyzer powerAnalyzer = new PowerAnalyzer();
+            DiagnosticAnalyzer diagnosticAnalyzer = new DiagnosticAnalyzer();
             string navigationPlanFile = Parameters.day3AInputs;
             int expectedPowerConsumption = 2954600;
 
             //ACT
-            int powerConsumption = powerAnalyzer.CalculateReportPowerConsumption(navigationPlanFile);
+            int powerConsumption = diagnosticAnalyzer.CalculateReportPowerConsumption(navigationPlanFile);
 
             //ASSERT
             Assert.AreEqual(expectedPowerConsumption, powerConsumption);
